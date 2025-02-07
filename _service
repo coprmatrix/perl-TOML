@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm">
+    <param name="filename">TOML</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/dlc/toml</param>
+    <param name="revision">HEAD</param>
+    <param name="extract">*TOML.pm</param>
+    <param name="without-version">enable</param>
+  </service>
+  <service name="run" mode="buildtime">
+    <param name="command">sed -i "s~\(version:\).*~\1 $(cat *.pm | sed -n 's/^$VERSION\s*=\s*'"['"'"]\([^'"'"'"]*\).*/\1/p')~" *.obsinfo</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cpanspec" mode="buildtime">
+    <param name="source">*.tar.gz</param>
+  </service>
+</services>

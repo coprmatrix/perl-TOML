@@ -2,9 +2,9 @@
   <service name="obs_scm">
     <param name="filename">TOML</param>
     <param name="scm">git</param>
-    <param name="url">https://github.com/dlc/toml</param>
+    <param name="url">https://salsa.debian.org/perl-team/modules/packages/libtoml-perl</param>
     <param name="revision">HEAD</param>
-    <param name="extract">*TOML.pm</param>
+    <param name="extract">*lib/TOML.pm</param>
     <param name="without-version">enable</param>
   </service>
   <service name="run" mode="buildtime">
